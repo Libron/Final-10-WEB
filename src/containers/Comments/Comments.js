@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import CommentForm from "../../components/CommentForm/CommentForm";
 import {addComment, fetchComments, removeComment} from "../../store/actions/commentsActions";
 
-import './Comments.css';
 import {connect} from "react-redux";
 import {Button} from "reactstrap";
+import './Comments.css';
+
 
 class Comments extends Component {
     componentDidMount() {
