@@ -20,7 +20,11 @@ const commentsReducer = (state = initialState, action) => {
         case ADD_COMMENT_SUCCESS:
             return ({...state, loading: false});
         case REMOVE_COMMENT_SUCCESS:
-            return ({...state, loading: false});
+            const idx = state.comments.findIndex(item => item.id === action.id);
+            const comments = [...state.comments];
+            console.log(comments, idx);
+            comments.splice(idx, 1);
+            return ({...state, comments, loading: false});
         default:
             return state;
     }

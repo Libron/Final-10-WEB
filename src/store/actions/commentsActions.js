@@ -10,7 +10,7 @@ export const fetchCommentsRequest = () => ({type: FETCH_COMMENTS_REQUEST});
 export const fetchCommentsSuccess = comments => ({type: FETCH_COMMENTS_SUCCESS, comments});
 export const fetchCommentsFailure = error => ({type: FETCH_COMMENTS_FAILURE, error});
 export const addCommentSuccess = () => ({type: ADD_COMMENT_SUCCESS});
-export const removeCommentSuccess = () => ({type: REMOVE_COMMENT_SUCCESS});
+export const removeCommentSuccess = (id) => ({type: REMOVE_COMMENT_SUCCESS, id});
 
 export const fetchComments = (id) => {
     return dispatch => {
@@ -36,7 +36,7 @@ export const removeComment = (id) => {
     return dispatch => {
         return axios.delete('/comments/' + id).then(
             () => {
-                return dispatch(removeCommentSuccess());
+                return dispatch(removeCommentSuccess(id));
             });
     }
 };
