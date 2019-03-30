@@ -3,7 +3,7 @@ import {
     FETCH_NEWS_REQUEST,
     FETCH_NEWS_SUCCESS, FETCH_POST_FAILURE,
     FETCH_POST_REQUEST,
-    FETCH_POST_SUCCESS
+    FETCH_POST_SUCCESS, REMOVE_POST_SUCCESS
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -31,6 +31,12 @@ const newsReducer = (state = initialState, action) => {
 
         case FETCH_POST_SUCCESS: {
             return {...state, loading: false, post: action.post};
+        }
+        case REMOVE_POST_SUCCESS: {
+            const idx = state.news.findIndex(item => item.id === action.id);
+            const news = [...state.news];
+            news.splice(idx, 1);
+            return {...state, news, loading: false}
         }
 
         default:

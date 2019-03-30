@@ -16,7 +16,7 @@ export const fetchPostRequest = () => ({type: FETCH_POST_REQUEST});
 export const fetchPostFailure = error => ({type: FETCH_POST_FAILURE, error});
 
 export const addPostSuccess = () => ({type: ADD_POST_SUCCESS});
-export const removePostSuccess = () => ({type: REMOVE_POST_SUCCESS});
+export const removePostSuccess = (id) => ({type: REMOVE_POST_SUCCESS, id});
 
 export const fetchNews = () => {
     return dispatch => {
@@ -40,11 +40,12 @@ export const fetchPost = (id) => {
     }
 };
 
-export const addPost = (data) => {
+export const addPost = (data, history) => {
     return dispatch => {
         return axios.post('/news', data).then(
             () => {
-                return dispatch(addPostSuccess());
+                dispatch(addPostSuccess());
+                history.push('/');
             });
     }
 };
@@ -53,7 +54,7 @@ export const removePost = (id) => {
     return dispatch => {
         return axios.delete('/news/'+ id).then(
             () => {
-                return dispatch(removePostSuccess());
+                return dispatch(removePostSuccess(id));
             }
         )
     }
