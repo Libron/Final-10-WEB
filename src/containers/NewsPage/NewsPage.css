@@ -1,0 +1,25 @@
+.NewsPage {
+
+
+}
+
+.NewsPage ul {
+    margin: 0;
+    padding: 0;
+}
+
+.NewsPage ul li {
+    list-style: none;
+    border-bottom: 1px solid black;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.NewsPage .News_image {
+    width: 250px;
+    height: 200px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
