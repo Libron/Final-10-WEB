@@ -28,7 +28,7 @@ class NewsForm extends Component {
             formData.append(key, this.state[key]);
         });
 
-        this.props.submit(formData);
+        this.props.submit(formData, this.props.history);
     };
 
     render() {
