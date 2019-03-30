@@ -25,7 +25,6 @@ class NewsFullDetails extends Component {
                         <p>{this.props.post.description}</p>
                     </div>
                 </div>
-<div style={{'clear': 'both'}} />
                 <Comments news_id={this.props.match.params.id}/>
             </Fragment>
         );
