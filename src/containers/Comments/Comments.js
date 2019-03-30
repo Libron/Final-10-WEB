@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import CommentForm from "../../components/CommentForm/CommentForm";
-import {addComment, fetchComments} from "../../store/actions/commentsActions";
+import {addComment, fetchComments, removeComment} from "../../store/actions/commentsActions";
 
 import './Comments.css';
 import {connect} from "react-redux";
+import {Button} from "reactstrap";
 
 class Comments extends Component {
     componentDidMount() {
@@ -21,6 +22,7 @@ class Comments extends Component {
                     <div key={item.id} className="Comment">
                         <p>Author: {item.author}</p>
                         <p>Message: {item.message}</p>
+                        <Button onClick={() => this.props.removeComment(item.id)}>remove</Button>
                     </div>
                 ))}
 
@@ -37,7 +39,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     fetchComments: (id) => dispatch(fetchComments(id)),
-    addComment: (data) => dispatch(addComment(data))
+    addComment: (data) => dispatch(addComment(data)),
+    removeComment: (id) => dispatch(removeComment(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comments);
