@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {fetchNews} from "../../store/actions/newsActions";
+import {fetchNews, removePost} from "../../store/actions/newsActions";
 import {connect} from "react-redux";
 import {Button} from "reactstrap";
 import NewsThumbnail from "../../components/NewsThumbnail/NewsThumbnail";
@@ -22,12 +22,18 @@ class NewsPage extends Component {
                 <div>
                     <h5>{item.title}</h5>
                     <p>{item.description}</p>
-                    <p>{item.datetime}</p>
+                    <p>{new Date(item.datetime).toLocaleString()}</p>
                     <Button
                         color="warning"
                         onClick={() => this.props.history.push('news/' + item.id)}
                     >
                         Read more
+                    </Button>
+                    <Button
+                        color="danger"
+                        onClick={() => this.props.removePost(item.id)}
+                    >
+                        Remove
                     </Button>
                 </div>
 
@@ -48,7 +54,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchNews: () => dispatch(fetchNews())
+    fetchNews: () => dispatch(fetchNews()),
+    removePost: (id) => dispatch(removePost(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsPage);
