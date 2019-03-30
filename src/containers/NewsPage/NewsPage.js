@@ -12,7 +12,7 @@ class NewsPage extends Component {
     }
 
     render() {
-        if (!this.props.news) {
+        if (this.props.newsLoading) {
             return <div>Loading...</div>
         }
 
@@ -42,7 +42,6 @@ class NewsPage extends Component {
 
         return (
             <div className="NewsPage">
-                <h1>List:</h1>
                 <ul>{news}</ul>
             </div>
         );
@@ -50,7 +49,8 @@ class NewsPage extends Component {
 }
 
 const mapStateToProps = state => ({
-    news: state.news.news
+    news: state.news.news,
+    loading: state.news.loading
 });
 
 const mapDispatchToProps = dispatch => ({
