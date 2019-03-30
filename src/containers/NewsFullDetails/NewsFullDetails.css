@@ -1,0 +1,11 @@
+.News_Detail {
+    background: #ffd180;
+    padding: 15px;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.News_Detail img {
+    margin-right: 15px;
+    max-width: 400px;
+}
