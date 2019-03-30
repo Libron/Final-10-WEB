@@ -8,14 +8,14 @@ class AddNews extends Component {
         return (
             <div>
                 <h2>Add new Post</h2>
-                <NewsForm submit={this.props.addPost}/>
+                <NewsForm submit={this.props.addPost} history={this.props.history}/>
             </div>
         );
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    addPost: (data) => dispatch(addPost(data))
+    addPost: (data, history) => dispatch(addPost(data, history))
 });
 
 export default connect(null, mapDispatchToProps)(AddNews);
